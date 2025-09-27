@@ -5,6 +5,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .ipynb_checkpoints/
+.virtual_documents/
 # Production builds
 build/
 dist/
