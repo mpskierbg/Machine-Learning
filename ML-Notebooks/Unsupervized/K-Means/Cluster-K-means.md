@@ -34,35 +34,41 @@ After the model is trained, we generate a second plot. This plot colors each dat
 Here is the complete Python script used for this demonstration:
 
 ```python
-# Import necessary libraries
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 
-# --- 1. Generate Synthetic Data ---
-# We create a dataset with 200 samples and 4 distinct clusters.
+# Generate Synthetic data
 X, y_true = make_blobs(n_samples=200, centers=4, cluster_std=0.8, random_state=42)
 
-# Plot the raw, unclustered data
+# Plot th data we just created to see what it looks like.
 plt.figure(figsize=(8, 6))
 plt.scatter(X[:, 0], X[:, 1], s=50)
-plt.title("Our Raw, Unclustered Data")
+plt.title("Our raw, unclustered data")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
 plt.show()
 
-# --- 2. Apply the K-Means Algorithm ---
-# Instantiate and fit the KMeans model, looking for 4 clusters.
+# Apply the K-Means Algo
+# Instantiate the KMeans Model
 kmeans = KMeans(n_clusters=4, random_state=42, n_init=10)
+
+# Fit the model to the data X.
 kmeans.fit(X)
+
+# Get the cluster assignments for each data point
 y_kmeans = kmeans.predict(X)
 
-# --- 3. Visualize the Clustering Results ---
-# Plot the data again, colored by the assigned cluster label.
+# Plot data again
 plt.figure(figsize=(8, 6))
-plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=200, alpha=0.75, marker='X')
 
-# Plot the final cluster centers.
+# Plot centers of the clusters
 centers = kmeans.cluster_centers_
-plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.75, marker='X')
-plt.title("Data After K-Means Clustering")
+plt.scatter(centers[:, 0], centers[:, 1], c='red', alpha=0.75, marker='X')
+
+plt.title("Data after K-Means clustering")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
 plt.show()
 ```

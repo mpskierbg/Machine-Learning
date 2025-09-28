@@ -35,31 +35,32 @@ The **"elbow"** of the curve—the point where the rate of decrease in inertia s
 Here is the complete Python script used for this demonstration:
 
 ```python
-# Import necessary libraries
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 
-# --- 1. Generate the same Synthetic Data ---
+# Generate Synthetic data
 X, y_true = make_blobs(n_samples=200, centers=4, cluster_std=0.8, random_state=42)
 
-# --- 2. Use the Elbow Method to find the optimal K ---
+# Use the elbow method to find the optimal K
 inertia_values = []
+
+# Test K from 1 to 10
 k_range = range(1, 11)
 
 for k in k_range:
-    # Instantiate and fit the KMeans model for the current k
+    # Instantiate and fit KMeans model for teh current k
     kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
     kmeans.fit(X)
-    # Append the model's inertia_ attribute to our list
+    # Append the movel's intertia attribute to our list
     inertia_values.append(kmeans.inertia_)
 
-# --- 3. Plot the Elbow Curve ---
+# Plot the elow curve
 plt.figure(figsize=(10, 6))
-plt.plot(k_range, inertia_values, marker='o', linestyle='--')
-plt.title('Elbow Method For Optimal K')
+plt.scatter(k_range, inertia_values, marker='o', linestyle='--')
+plt.title('Elbow Method for Optimal K')
 plt.xlabel('Number of Clusters (K)')
-plt.ylabel('Inertia')
+plt.ylabel('Intertia')
 plt.xticks(k_range)
 plt.grid(True)
 plt.show()
