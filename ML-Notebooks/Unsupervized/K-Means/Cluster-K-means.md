@@ -72,3 +72,5 @@ plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.show()
 ```
+## Results
+![alt text](image.png)

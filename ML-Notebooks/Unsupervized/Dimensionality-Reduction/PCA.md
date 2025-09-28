@@ -80,3 +80,6 @@ plt.legend(handles=scatter.legend_elements()[0], labels=list(digits.target_names
 plt.grid(True)
 plt.show()
 ```
+
+## Results
+![alt text](image.png)

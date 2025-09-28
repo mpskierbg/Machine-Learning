@@ -65,3 +65,5 @@ plt.xticks(k_range)
 plt.grid(True)
 plt.show()
 ```
+## Results
+![alt text](image-1.png)
